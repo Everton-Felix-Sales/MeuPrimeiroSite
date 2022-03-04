@@ -1,0 +1,121 @@
+﻿
+@{
+    ViewData["Title"] = "Contato";
+    AltalyStore.Models.Contato contato = (AltalyStore.Models.Contato)ViewData["CONTATO"];
+}
+
+<!-- Start Contact -->
+<section id="contact" class="p-top-80 p-bottom-50">
+    <div class="container">
+
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <!-- Section Title -->
+                <div class="section-title text-center m-bottom-40">
+                    <h2 class="wow fadeInDown" data-wow-duration="1s" data-wow-delay="0.6s">Contato</h2>
+                    <div class="divider-center-small wow zoomIn" data-wow-duration="1s" data-wow-delay="0.6s"></div>
+                    <p class="section-subtitle wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.6s"><em></em></p>
+                </div>
+            </div> <!-- /.col -->
+        </div>  <!-- /.row -->
+
+        <div class="row">
+
+            <!-- === Contact Form === -->
+            <div class="col-md-7 col-sm-7 p-bottom-30">
+                <div class="contact-form row">
+                    @if (ViewData["MSG_S"] != null)
+                    {
+                        <p class="alert alert-success">@ViewData["MSG_S"]</p>
+                    }
+
+                    @if (ViewData["MSG_E"] != null)
+                    {
+                        <p class="alert alert-danger">@Html.Raw(ViewData["MSG_E"])</p>
+                    }
+
+                    <form role="form" method="post" action="/Home/ContatoAcao">
+                        <div class="col-sm-6 contact-form-item wow zoomIn">
+                            <input name="nome" id="nome" type="text" placeholder="Qual seu Nome: *" required="" value="@(contato != null ? contato.Nome : "")"/>
+                            <span class="error" id="err-name">Coloque seu nome!!</span>
+                        </div>
+                        <div class="col-sm-6 contact-form-item wow zoomIn">
+                            <input name="telefone" id="telefone" type="text" placeholder="Telefone: *" value="@(contato != null ? contato.Telefone : "")"/>
+                            <span class="error" id="err-name">Coloque seu Telefone!!</span>
+                        </div>
+
+                        <div class="col-sm-6 contact-form-item wow zoomIn">
+                            <input name="email" id="email" type="text" placeholder="E-Mail: *"  value="@(contato != null ? contato.Email : "")"/>
+                            <span class="error" id="err-email">please enter e-mail</span>
+                            <span class="error" id="err-emailvld">Fomrato de e-mail invalido!!</span>
+                        </div>
+                        <div class="col-sm-12 contact-form-item wow zoomIn">
+                            <textarea name="texto" id="texto" placeholder="Qual sua Mensagem">@(contato != null ? contato.Texto : "")</textarea>
+                        </div>
+                        <div class="col-sm-12 contact-form-item">
+                            <button class="subscrible btn btn-primary btn-block" type="submit">Enviar</button>
+                        </div>
+                        <div class="clear"></div>
+                        <div class="error text-align-center" id="err-form">There was a problem validating the form please check!</div>
+                        <div class="error text-align-center" id="err-timedout">The connection to the server timed out!</div>
+                        <div class="error" id="err-state"></div>
+                    </form>
+
+                    <div class="clearfix"></div>
+                    <div id="ajaxsuccess">Mensagem enviada com sucesso!!</div>
+                    <div class="clear"></div>
+
+                </div> <!-- /.contacts-form & inner row -->
+            </div> <!-- /.col -->
+            <!-- === Contact Information === -->
+            <div class="col-md-5 col-sm-5 p-bottom-30">
+                <address class="contact-info">
+
+                    <p class="m-bottom-30 wow slideInRight"></p>
+
+                    <!-- === Location === -->
+                    <div class="m-top-20 wow slideInRight">
+                        <div class="contact-info-icon">
+                            <i class="fa fa-location-arrow"></i>
+                        </div>
+                        <div class="contact-info-title">
+                            Endereço:
+                        </div>
+                        <div class="contact-info-text">
+                            149 Null Street, New York, NY 098
+                        </div>
+                    </div>
+
+                    <!-- === Phone === -->
+                    <div class="m-top-20 wow slideInRight">
+                        <div class="contact-info-icon">
+                            <i class="fa fa-phone"></i>
+                        </div>
+                        <div class="contact-info-title">
+                            Telefone:
+                        </div>
+                        <div class="contact-info-text">
+                            +1-000-1111-3333
+                        </div>
+                    </div>
+
+                    <!-- === Mail === -->
+                    <div class="m-top-20 wow slideInRight">
+                        <div class="contact-info-icon">
+                            <i class="fa fa-envelope"></i>
+                        </div>
+                        <div class="contact-info-title">
+                            Email:
+                        </div>
+                        <div class="contact-info-text">
+                            support@tabthemes.com
+                        </div>
+                    </div>
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3669.5971497990176!2d-46.56995958498809!3d-23.11183845103039!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94cec1316b84fd21%3A0x9bd28d90dbf900f1!2sR.%20Mal.%20Rondon%2C%20320%20-%20Recreio%20Estoril%2C%20Atibaia%20-%20SP%2C%2012944-130!5e0!3m2!1spt-BR!2sbr!4v1623003308691!5m2!1spt-BR!2sbr" style="border:0;  width: 100%; height: 100%;  " allowfullscreen="" loading="lazy"></iframe>
+                </address>
+            </div> <!-- /.col -->
+
+        </div> <!-- /.row -->
+    </div> <!-- /.container -->
+</section>
+<!-- End Contact -->
